@@ -64,7 +64,7 @@
 								<section class="post">
 									<h2>Soit via le formulaire suivant : </h2>
 
-									<form method="post" action = "https://script.google.com/macros/s/AKfycbzf-sdYjp2Mw3XDS7Kg1mOY5b-S-eMxTWRAaJkwJJcQ6MLR647e/exec">
+									<form id ="contact-form">
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="demo-name" id="name" placeholder="Nom" />
@@ -111,6 +111,22 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script type="text/javascript">
+				    var $form = $('form#contact-form'),
+					url = 'https://script.google.com/macros/s/AKfycbzf-sdYjp2Mw3XDS7Kg1mOY5b-S-eMxTWRAaJkwJJcQ6MLR647e/exec';
 
+				    $('#submit-form').on('click', function(e) {
+					e.preventDefault();
+					var jqxhr = $.ajax({
+					    url: url,
+					    method: "GET",
+					    dataType: "json",
+					    data: $form.serializeObject()
+					}).done(function(){
+					       // do something
+					  }
+					 );
+				    });
+				</script>	
 	</body>
 </html>
